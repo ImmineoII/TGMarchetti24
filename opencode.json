@@ -10,54 +10,9 @@
       "enabled": true
     },
     "notion": {
-      "type": "local",
-      "command": ["npx", "-y", "@notionhq/notion-mcp-server"],
-      "env": {
-        "NOTION_TOKEN": "$NOTION_TOKEN"
-      },
+      "type": "remote",
+      "url": "https://mcp.notion.com/mcp",
       "enabled": true
-    }
-  },
-  "agent": {
-    "maestro": {
-      "description": "SDLC orchestrator. Starts and manages the full development lifecycle loop: requirements → architecture → implementation → testing → code review. Use this to develop a feature end-to-end.",
-      "mode": "primary",
-      "model": "adesso/claude-haiku-4-5",
-      "permission": {
-        "task": {
-          "*": "allow"
-        }
-      }
-    },
-    "requirement-engineer": {
-      "description": "Gathers and documents software requirements. Produces PRD, user stories with acceptance criteria, and constraints. Start here for new features.",
-      "mode": "subagent",
-      "model": "adesso/qwen-3.6-35b-sovereign"
-    },
-    "architect": {
-      "description": "Designs system architecture, API contracts, database schema, and writes ADRs. Run after requirements are complete.",
-      "mode": "subagent",
-      "model": "adesso/qwen-3.6-35b-sovereign"
-    },
-    "frontend-dev": {
-      "description": "Implements frontend UI features with React/TypeScript. Handles components, state, API integration, accessibility, and frontend tests.",
-      "mode": "subagent",
-      "model": "adesso/qwen-3.6-35b-sovereign"
-    },
-    "backend-dev": {
-      "description": "Implements backend APIs, business logic, database access, authentication, and backend tests.",
-      "mode": "subagent",
-      "model": "adesso/qwen-3.6-35b-sovereign"
-    },
-    "tester": {
-      "description": "Validates acceptance criteria, writes and runs test plans, produces bug reports. Run after implementation.",
-      "mode": "subagent",
-      "model": "adesso/qwen-3.6-35b-sovereign"
-    },
-    "code-reviewer": {
-      "description": "Reviews code for correctness, security, performance, and quality. Approves or requests changes. Final gate before feature is complete.",
-      "mode": "subagent",
-      "model": "adesso/qwen-3.6-35b-sovereign"
     }
   }
 }
